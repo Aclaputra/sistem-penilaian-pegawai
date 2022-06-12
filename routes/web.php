@@ -30,7 +30,6 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-
 /**
  * /dashboard/sasaran_kerja_pegawai/skp            (GET)
  * /dashboard/sasaran_kerja_pegawai/skp/create     (GET)
