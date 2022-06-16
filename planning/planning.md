@@ -6,6 +6,9 @@ Routes:
     - /sasaran_kerja_pegawai
         - /create
         - /{id}/edit
+    - /laporan
+        - /bulanan
+        - /tahunan
     - /komponen_penilaian_pekerjaan (KKP)
         - /aktivitas (CRUD Aktivitas)
             - /create
@@ -37,3 +40,14 @@ Routes:
             - /{id}/edit
             - /bobot
             - /rate
+
+<!-- notes -->
+- buat info di /dashboard pegawai
+- buat crud di /dashboard/sasaran_kerja_pegawai/skp
+- buat crud penilaian kinerja skp di :
+    - dashboard/komponen_penilaian_pekerjaan/aktiv
+    - dashboard/komponen_penilaian_pekerjaan/iku
+    - dashboard/komponen_penilaian_pekerjaan/realisasi_anggaran
+    - dashboard/komponen_penilaian_pekerjaan/perilaku
+    - dashboard/komponen_penilaian_pekerjaan/iki
+    - dashboard/komponen_penilaian_pekerjaan/ikp

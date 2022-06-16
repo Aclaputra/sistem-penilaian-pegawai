@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SasaranKerjaPegawai;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class SasaranKerjaPegawaiController extends Controller
 {
@@ -14,7 +16,11 @@ class SasaranKerjaPegawaiController extends Controller
      */
     public function index()
     {
-        $data['skp'] = SasaranKerjaPegawai::orderBy('id', 'desc')->paginate(5);
+        // $data['skp'] = SasaranKerjaPegawai::orderBy('id', 'desc')->paginate(5);
+        $data['skp'] = User::join('skp', 'users.id', '=', 'skp.user_id')
+        ->where('users.id', Auth::user()->id)
+        ->get();
+
         return view('skp.index', $data);
     }
 
@@ -45,8 +51,9 @@ class SasaranKerjaPegawaiController extends Controller
         $skp->nama = $request->nama;
         $skp->nip = $request->nip;
         $skp->jabatan = $request->jabatan;
+        $skp->user_id = $request->user_id;
         $skp->save();
-        return redirect()->route('skp.index');
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -57,7 +64,12 @@ class SasaranKerjaPegawaiController extends Controller
      */
     public function show(SasaranKerjaPegawai $skp)
     {
-        return view('skp.show', compact('skp'));
+        $data['skp'] = User::join('skp', 'users.id', '=', 'skp.user_id')
+        ->where('users.id', Auth::user()->id)
+        ->get();
+
+        return view('skp.show', $data);
+        // return view('skp.show', compact('skp'));
     }
 
     /**
@@ -89,6 +101,9 @@ class SasaranKerjaPegawaiController extends Controller
         $skp->nama = $request->nama;
         $skp->nip = $request->nip;
         $skp->jabatan = $request->jabatan;
+        $skp->user_id = $request->user_id;
+        $skp->save();
+
         return redirect()->route('skp.index');
     }
 

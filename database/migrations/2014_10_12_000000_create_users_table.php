@@ -22,6 +22,19 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        Schema::create('skp', function (Blueprint $table) {
+            $table->id();
+            // $table->unsignedInteger('user_id');
+            $table->string('nama');
+            $table->string('nip');
+            $table->string('jabatan');
+            $table->timestamps();
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+        });
     }
 
     /**

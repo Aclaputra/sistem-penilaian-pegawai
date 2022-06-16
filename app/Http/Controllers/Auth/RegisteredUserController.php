@@ -49,6 +49,10 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        // $data['skp'] = User::join('skp', 'users.id', '=', 'skp.user_id')
+        // ->where('users.id', Auth::user()->id)
+        // ->get();
+
+        return view('skp.create');
     }
 }

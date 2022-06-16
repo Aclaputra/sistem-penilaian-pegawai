@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }} Pegawai
+            {{ __('Dashboard') }} Info SKP
         </h2>
     </x-slot>
 
@@ -43,83 +43,85 @@
             <div class="mt-4 bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <!-- start of table -->
-                    <h1 class="text-center">LIST TABEL DATA SASARAN KERJA PEGAWAI</h1>
+                    <h1 class="text-center">INFO SASARAN KERJA PEGAWAI</h1>
                     <div class="p-2">
                         <div class="flex flex-col">
                             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                                <div class="overflow-hidden">
-                                    <table class="min-w-full">
-                                        <thead class="border-b">
-                                            <tr>
-                                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                    No
-                                                </th>
-                                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                    Nama
-                                                </th>
-                                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                    NIP
-                                                </th>
-                                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                    Jabatan
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($skp as $data)
-                                            <tr class="border-b">
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $loop->iteration }}</td>
-                                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $data->nama }}
-                                                </td>
-                                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $data->nip }}
-                                                </td>
-                                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $data->jabatan }}
-                                                </td>
-                                                <td>
-                                                    <form method="POST" action="{{ route('skp.destroy', $data->id) }}">
-                                                        <a href="{{ url('dashboard/sasaran_kerja_pegawai/skp/' . $data->id) }}">view</a>
-                                                        <a href="{{ url('dashboard/sasaran_kerja_pegawai/skp/' . $data->id . '/edit') }}">edit</a>
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <input class="btn btn-danger" type="submit" value="Delete" />
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                            <!-- <tr class="bg-white border-b">
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
-                                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    Martina mizuki
-                                                </td>
-                                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    192737123
-                                                </td>
-                                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    Data Scientist
-                                                </td>
-                                            </tr>
-                                            <tr class="bg-white border-b">
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
-                                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    Muhammad Acla
-                                                </td>
-                                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    197231231
-                                                </td>
-                                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    Site Reliability Engineer
-                                                </td>
-                                            </tr> -->
-                                        </tbody>
-                                    </table>
-                                    <div class="m-6">
-                                        {!! $skp->links() !!}
+                                    <div class="overflow-hidden">
+                                        <div class="text-center">
+                                            <form method="POST" action="{{ route('skp.destroy', $skp[0]->id) }}">
+                                                <a href="{{ url('dashboard/sasaran_kerja_pegawai/skp/' . $skp[0]->id) }}">View</a> | 
+                                                <a href="{{ url('dashboard/sasaran_kerja_pegawai/skp/' . $skp[0]->id . '/edit') }}">Edit</a> 
+                                                <!-- @method('DELETE')
+                                                @csrf
+                                                <input class="btn btn-danger" type="submit" value="Delete" /> -->
+                                            </form>
+                                        </div>
+                                        <table class="min-w-full">
+                                            <thead class="border-b">
+                                                <tr>
+                                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                                        Detail
+                                                    </th>
+                                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                                        Value
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="border-b">
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        Nama
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        {{ $skp[0]->name }}
+                                                    </td>
+                                                </tr>
+                                                <tr class="border-b">
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        NIP
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        {{ $skp[0]->nip }}
+                                                    </td>
+                                                </tr>
+                                                <tr class="border-b">
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        Jabatan
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        {{ $skp[0]->jabatan }}
+                                                    </td>
+                                                </tr>
+
+                                                <!-- <tr class="bg-white border-b">
+                                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        Martina mizuki
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        192737123
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        Data Scientist
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b">
+                                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        Muhammad Acla
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        197231231
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        Site Reliability Engineer
+                                                    </td>
+                                                </tr> -->
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </div>
                                 </div>
                             </div>
                         </div>
@@ -130,3 +132,6 @@
         </div>
     </div>
 </x-app-layout>
+
+
+

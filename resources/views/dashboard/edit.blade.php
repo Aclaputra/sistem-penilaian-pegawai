@@ -1,17 +1,17 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }} SKP
+            {{ __('Dashboard') }} Pegawai
         </h2>
     </x-slot>
    <!-- <h1> edit skp</h1>
-   <p>id : {{ $skp->id }}</p>
-   <p>nama : {{ $skp->nama }}</p>
-   <p>nip : {{ $skp->nip }}</p>
-   <p>jabatan : {{ $skp->jabatan }}</p> -->
+   <p>id : {{ $dashboard->id }}</p>
+   <p>nama : {{ $dashboard->nama }}</p>
+   <p>nip : {{ $dashboard->nip }}</p>
+   <p>jabatan : {{ $dashboard->jabatan }}</p> -->
    <div class="m-12">
 
-       <form action="{{ route('skp.update', $skp->id) }}" method="POST" enctype="multipart/form-data">
+       <form action="{{ route('dashboard.update', $skp->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group mb-6">
@@ -32,7 +32,7 @@
                     m-0
                     focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Masukkan Nama" 
                     name="nama"
-                    value="{{ $skp->nama }}"
+                    value="{{ $pegawai->nama }}"
                     >
             </div>
     
@@ -54,7 +54,7 @@
                     m-0
                     focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Masukkan NIP" 
                     name="nip"
-                    value="{{ $skp->nip }}"
+                    value="{{ $pegawai->nip }}"
                     >
             </div>
     
@@ -76,9 +76,8 @@
                     m-0
                     focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Masukkan Jabatan" 
                     name="jabatan"
-                    value="{{ $skp->jabatan }}"
+                    value="{{ $pegawai->jabatan }}"
                     >
-                <input type="hidden" name="user_id" value="{{ $skp->user_id }}">
             </div>
             <button type="submit" class="
             px-6

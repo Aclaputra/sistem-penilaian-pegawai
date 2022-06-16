@@ -8,6 +8,7 @@ use App\Http\Controllers\RealisasiAnggaranController;
 use App\Http\Controllers\PerilakuController;
 use App\Http\Controllers\KKPIKIController;
 use App\Http\Controllers\KKPIKPController;
+use App\Http\Controllers\PegawaiDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::resource('dashboard', PegawaiDashboardController::class)
+    ->name('index', 'dashboard');
 
 /**
  * /dashboard/sasaran_kerja_pegawai/skp            (GET)

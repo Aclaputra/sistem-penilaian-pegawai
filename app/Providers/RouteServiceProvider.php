@@ -18,6 +18,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/dashboard';
+    public const SKP_CREATE = '/dashboard/sasaran_kerja_pegawai/skp/create';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.

@@ -9,6 +9,8 @@ class SasaranKerjaPegawai extends Model
 {
     use HasFactory;
 
+    protected $table = "skp";
+
     protected $fillable = [
         'nama',
         'nip',

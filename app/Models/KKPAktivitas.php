@@ -9,6 +9,8 @@ class KKPAktivitas extends Model
 {
     use HasFactory;
 
+    protected $table = 'kkpaktivitas';
+
     protected $fillable = [
         'nama',
         'nip',
